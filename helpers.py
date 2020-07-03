@@ -2,6 +2,9 @@ from math import degrees, atan
 
 
 def collinear(v1, v2, l1, l2, epsilon=1e-08):
+    if not l1 or not l2:
+        # нулевой вектор не может быть коллинеарным
+        return False
     unit_v1 = [v1[0] / l1, v1[1] / l1, v1[2] / l1]
     unit_v2 = [v2[0] / l2, v2[1] / l2, v2[2] / l2]
     return unit_v1[0] - epsilon < unit_v2[0] < unit_v1[0] + epsilon and unit_v1[1] - epsilon < unit_v2[1] < unit_v1[

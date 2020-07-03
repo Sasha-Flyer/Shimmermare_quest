@@ -24,7 +24,11 @@ def main():
 
     current_top_targetx = target_x
     current_bot_targetx = target_x
-    while abs(bottom_x) <= d + x or top_x <= d + x:
+    l = howLong(*self_points[0], target_x, target_y, target_z)
+    # проводим первый вектор от исходной позиции до неотраженой цели
+    count = appendToExcludeVectors(start_point_x, start_point_y, start_point_z, start_point_x, start_point_y, start_point_z, exclude_vectors, target_x, target_y, target_z, l, count)
+    print(count)
+    while True:
         # отражаем исходный куб в одном направлении
         top_limit = False
         current_top_selfx = top_x + abs(top_x - current_top_selfx)
@@ -57,7 +61,7 @@ def main():
         current_top_targety = target_y
         current_bot_targety = target_y
 
-        while abs(bottom_y) <= d + y or top_y <= d + y:
+        while True:
             top_limit = False
             current_top_selfy = top_y + abs(top_y - current_top_selfy)
             current_top_targety = top_y + abs(top_y - current_top_targety)
@@ -88,7 +92,7 @@ def main():
         current_bot_selfz = self_z
         current_top_targetz = target_z
         current_bot_targetz = target_z
-        while abs(bottom_z) <= d + z or top_z <= d + z:
+        while True:
             top_limit = False
             current_top_selfz = top_z + abs(top_z - current_top_selfz)
             current_top_targetz = top_z + abs(top_z - current_top_targetz)
