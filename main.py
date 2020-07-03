@@ -27,7 +27,7 @@ def main():
     l = howLong(*self_points[0], target_x, target_y, target_z)
     # проводим первый вектор от исходной позиции до неотраженой цели
     count = appendToExcludeVectors(start_point_x, start_point_y, start_point_z, start_point_x, start_point_y, start_point_z, exclude_vectors, target_x, target_y, target_z, l, count)
-    print(count)
+
     while True:
         # отражаем исходный куб в одном направлении
         top_limit = False
@@ -43,7 +43,7 @@ def main():
         top_x += x
         current_bot_selfx = bottom_x - abs(bottom_x - current_bot_selfx)
         current_bot_targetx = bottom_x - abs(bottom_x - current_bot_targetx)
-        l = howLong(*self_points[0], current_bot_targetx, target_y, target_z)
+        l = howLong(start_point_x, start_point_y, start_point_z, current_bot_targetx, target_y, target_z)
         if l <= d:
             self_points.append([current_bot_selfx, self_y, self_z])
             target_points.append([current_bot_targetx, target_y, target_z])
@@ -65,7 +65,7 @@ def main():
             top_limit = False
             current_top_selfy = top_y + abs(top_y - current_top_selfy)
             current_top_targety = top_y + abs(top_y - current_top_targety)
-            l = howLong(*self_points[0], target_x, current_top_targety, target_z)
+            l = howLong(start_point_x, start_point_y, start_point_z, target_x, current_top_targety, target_z)
             if l <= d:
                 self_points.append([self_x, current_top_selfy, self_z])
                 target_points.append([target_x, current_top_targety, target_z])
@@ -75,7 +75,7 @@ def main():
             top_y += y
             current_bot_selfy = bottom_y - abs(bottom_y - current_bot_selfy)
             current_bot_targety = bottom_y - abs(bottom_y - current_bot_targety)
-            l = howLong(*self_points[0], target_x, current_bot_targety, target_z)
+            l = howLong(start_point_x, start_point_y, start_point_z, target_x, current_bot_targety, target_z)
             if l <= d:
                 self_points.append([self_x, current_bot_selfy, self_z])
                 target_points.append([target_x, current_bot_targety, target_z])
@@ -96,7 +96,7 @@ def main():
             top_limit = False
             current_top_selfz = top_z + abs(top_z - current_top_selfz)
             current_top_targetz = top_z + abs(top_z - current_top_targetz)
-            l = howLong(*self_points[0], target_x, target_y, current_top_targetz)
+            l = howLong(start_point_x, start_point_y, start_point_z, target_x, target_y, current_top_targetz)
             if l <= d:
                 self_points.append([self_x, self_y, current_top_selfz])
                 target_points.append([target_x, target_y, current_top_targetz])
@@ -106,7 +106,7 @@ def main():
             top_z += z
             current_bot_selfz = bottom_z - abs(bottom_z - current_bot_selfz)
             current_bot_targetz = bottom_z - abs(bottom_z - current_bot_targetz)
-            l = howLong(*self_points[0], target_x, target_y, current_bot_targetz)
+            l = howLong(start_point_x, start_point_y, start_point_z, target_x, target_y, current_bot_targetz)
             if l <= d:
                 self_points.append([self_x, self_y, current_bot_selfz])
                 target_points.append([target_x, target_y, current_bot_targetz])
